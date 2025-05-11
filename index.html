@@ -21,28 +21,34 @@
 
   <script>
     // The value below is injected by flutter build, do not touch.
-    const serviceWorkerVersion = "1218375180";
+    const serviceWorkerVersion = "3102688054";
   </script>
   <!-- This script adds the flutter initialization JS code -->
   <script src="flutter.js" defer></script>
 </head>
 <body>
   <script>
-    window.addEventListener('load', function() {
-      // Ensure paths are correctly resolved
-      window.flutterWebRenderer = "html";
-      
-      // Load service worker
+    window.addEventListener('load', function(ev) {
+      // Download main.dart.js
       _flutter.loader.loadEntrypoint({
         serviceWorker: {
           serviceWorkerVersion: serviceWorkerVersion,
         },
         onEntrypointLoaded: async function(engineInitializer) {
-          // Initialize the Flutter engine
+          // Initialize the Flutter engine with optimized settings for image quality
           let appRunner = await engineInitializer.initializeEngine({
-            // Force HTML renderer for better compatibility
-            renderer: "html",
-            assetBase: "/",
+            renderer: "canvaskit",
+            canvasKitBaseUrl: "/canvaskit/",
+            canvasKitVariant: "full",
+            canvasKitMaximumSurfaces: 8,
+            glContext: {
+              antialias: true,
+              preserveDrawingBuffer: true,
+              alpha: true,
+              depth: true,
+              stencil: true,
+              powerPreference: "high-performance"
+            }
           });
           // Run the app
           await appRunner.runApp();
