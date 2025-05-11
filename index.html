@@ -21,7 +21,7 @@
 
   <script>
     // The value below is injected by flutter build, do not touch.
-    const serviceWorkerVersion = "684225682";
+    const serviceWorkerVersion = "3230295875";
   </script>
   <!-- This script adds the flutter initialization JS code -->
   <script src="flutter.js" defer></script>
@@ -35,19 +35,20 @@
           serviceWorkerVersion: serviceWorkerVersion,
         },
         onEntrypointLoaded: async function(engineInitializer) {
-          // Initialize the Flutter engine with optimized settings for image quality
+          // Initialize the Flutter engine with optimized settings for performance
           let appRunner = await engineInitializer.initializeEngine({
-            renderer: "canvaskit",
+            // Use HTML renderer for mobile devices to improve performance
+            renderer: window.innerWidth < 800 ? "html" : "canvaskit",
             canvasKitBaseUrl: "/canvaskit/",
             canvasKitVariant: "full",
-            canvasKitMaximumSurfaces: 8,
+            canvasKitMaximumSurfaces: 4, // Reduced from 8 for better performance
             glContext: {
-              antialias: true,
-              preserveDrawingBuffer: true,
+              antialias: false, // Disable antialiasing for better performance
+              preserveDrawingBuffer: false, // Disable for better performance
               alpha: true,
               depth: true,
               stencil: true,
-              powerPreference: "high-performance"
+              powerPreference: "default" // Changed from high-performance for mobile
             }
           });
           // Run the app
