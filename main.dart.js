@@ -68051,7 +68051,7 @@ s=1
 break}case 1:return A.F(q,r)}})
 return A.G($async$xn,r)},
 TI(a,b,c){var s,r=null
-if(c<600)return A.dl(A.a([A.al7("assets/images/sample.png",r),new A.jM(A.alf(new A.ag0(b),J.c9(b),B.bX,!0),r)],t.E),B.ah,B.I,B.Y)
+if(c<600)return A.dl(A.a([A.al7("assets/images/Sillage.png",r),new A.jM(A.alf(new A.ag0(b),J.c9(b),B.bX,!0),r)],t.E),B.ah,B.I,B.Y)
 else{s=J.bw(b)
 if(c<1100)return new A.jM(A.ub(B.CR,new A.ag1(b),s.gE(b),r,B.bX,!0),r)
 else return new A.jM(A.ub(B.CS,new A.ag2(b),s.gE(b),r,B.bX,!0),r)}},
